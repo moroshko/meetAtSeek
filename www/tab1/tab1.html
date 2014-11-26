@@ -26,7 +26,7 @@
         <button class="button button-stable interest-button icon-left ion-plus"
                 ng-repeat="matchingInterest in matchingInterests"
                 ng-click="addInterest(matchingInterest.name)">
-          {{ matchingInterest.name }}
+          {{ matchingInterest.name }} ({{ usersCount(matchingInterest) }})
         </button>
       </div>
       <div class="text-center add-interest" 

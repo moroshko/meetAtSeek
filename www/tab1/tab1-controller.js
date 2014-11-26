@@ -9,6 +9,25 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
     filter: ''
   };
 
+  function compareMatchingInterests(int1, int2) {
+    var users1 = Object.keys(int1.users).length;
+    var users2 = Object.keys(int2.users).length;
+
+    if (users1 > users2) {
+      return -1;
+    }
+
+    if (users1 < users2) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  $scope.usersCount = function(matchingInterest) {
+    return Object.keys(matchingInterest.users).length;
+  };
+
   $scope.notInMyInterests = function(interestObjOrName) {
     var checkName = (typeof interestObjOrName === 'string');
 
@@ -30,7 +49,7 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
 
       $scope.matchingInterests = $scope.matchingInterests.filter(function(interest) {
         return regex.test(interest.name);
-      });
+      }).sort(compareMatchingInterests);
     }
   });
 
@@ -49,7 +68,7 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
       $q.all(promises).then(function(interests) {
         PleaseWait.hide();
         $scope.interests = interests;
-        $scope.matchingInterests = allInterests.filter($scope.notInMyInterests);
+        $scope.matchingInterests = allInterests.filter($scope.notInMyInterests).sort(compareMatchingInterests);
         $scope.ready = true;      
       });
     });

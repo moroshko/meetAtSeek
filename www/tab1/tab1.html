@@ -28,11 +28,9 @@
                 ng-click="addInterest(matchingInterest.name)">
           {{ matchingInterest.name }} ({{ usersCount(matchingInterest) }})
         </button>
-      </div>
-      <div class="text-center add-interest" 
-           ng-if="data.filter && matchingInterests.length === 0 && notInMyInterests(data.filter)">
         <button class="button button-balanced icon-left ion-plus"
-                ng-click="addInterest()">
+                ng-click="addInterest()"
+                ng-if="data.filter && notInMyInterests(data.filter)">
           {{ data.filter }}
         </button>
       </div>

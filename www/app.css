@@ -7815,6 +7815,10 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   -webkit-transition: none !important;
   transition: none !important; }
 
+.tabs .tab-item.tab-item-active {
+  color: #4a87ee;
+  border-color: #4a87ee; }
+
 .login h1 {
   font-size: 100px; }
 .login .show-password-toggle {
@@ -7823,6 +7827,13 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   right: 10px;
   z-index: 3; }
 
+.tab1 .interest-button {
+  margin-right: 10px;
+  margin-bottom: 10px; }
+  .tab1 .interest-button:before {
+    line-height: 45px;
+    margin-left: 5px;
+    opacity: 0.5; }
 .tab1 .add-interest {
   margin-top: 20px; }
 .tab1 .suggested-interests {

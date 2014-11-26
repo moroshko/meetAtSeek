@@ -1,4 +1,14 @@
 .tab1 {
+  .interest-button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    &:before {
+      line-height: 45px;
+      margin-left: 5px;
+      opacity: 0.5;
+    }
+  }
   .add-interest {
     margin-top: 20px;
   }

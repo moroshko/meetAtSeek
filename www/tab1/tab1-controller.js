@@ -1,5 +1,5 @@
 angular.module('tab1', []).controller('Tab1Ctrl', function(
-  $q, $scope, FIREBASE_ROOT, PleaseWait, Auth, Users, Interests) {
+  $q, $scope, $state, FIREBASE_ROOT, PleaseWait, Auth, Users, Interests) {
 
   var usersRef = new Firebase(FIREBASE_ROOT + '/users');
   var allInterests;
@@ -68,5 +68,15 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
     Users.removeInterest(interestId).then(function() {
       Interests.removeUserFrom(interestId);
     });
+  };
+
+  var lastClickOnMyInterests = null;
+
+  $scope.onMyInterestsClick = function() {
+    if (lastClickOnMyInterests !== null && Date.now() - lastClickOnMyInterests < 1000) {
+      $state.go('login');
+    } else {
+      lastClickOnMyInterests = Date.now();
+    }
   };
 });

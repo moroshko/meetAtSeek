@@ -46,6 +46,8 @@ gulp.task('release', function() {
   sh.exec('ionic build android');
   sh.cp('-f', './platforms/android/ant-build/CordovaApp-debug.apk', './release/MeetAtSeek.apk');
   sh.cp('-f', './release/MeetAtSeek.apk', '/Users/mishamoroshko/Dropbox/Public/SEEK/MeetAtSeek.apk');
-  //sh.exec('git subtree push --prefix www origin gh-pages');
+  sh.exec('git commit -am "Update APK"');
+  sh.exec('git push origin master');
+  sh.exec('git subtree push --prefix www origin gh-pages');
 });
 

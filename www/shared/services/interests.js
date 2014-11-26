@@ -2,6 +2,34 @@ angular.module('shared').service('Interests', function($q, FIREBASE_ROOT, Auth, 
   var interestsRef = new Firebase(FIREBASE_ROOT + '/interests');
   var self = this;
 
+  this.all = function() {
+    var defer = $q.defer();
+
+    interestsRef.once('value', function(snapshot) {
+      var interests = snapshot.val();
+
+      if (interests === null) {
+        defer.resolve([]);
+      } else {
+        var result = [];
+
+        snapshot.forEach(function(interestSnapshot) {
+          var interest = interestSnapshot.val();
+
+          if (interest !== null) {
+            interest.id = interestSnapshot.key();
+          }
+
+          result.push(interest);
+        });
+
+        defer.resolve(result);
+      }
+    });
+
+    return defer.promise;
+  };
+
   this.getById = function(interestId) {
     var defer = $q.defer();
 

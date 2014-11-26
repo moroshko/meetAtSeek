@@ -10,6 +10,10 @@
                 ng-click="removeInterest(interest.id)">
           {{ interest.name }}
         </button>
+        <div class="empty-profile-message" ng-if="interests.length === 0">
+          Your profile is empty <i class="icon ion-sad"></i><br>
+          Add interests by clicking the buttons below
+        </div>
       </div>
       <div class="item item-divider suggested-interests">
         Interests Pool
@@ -18,10 +22,17 @@
         <i class="icon ion-search placeholder-icon"></i>
         <input type="text" placeholder="Search" ng-model="data.filter">
       </label>
-      <div class="text-center add-interest" ng-if="data.filter">
+      <div class="padding-top">
+        <button class="button button-stable interest-button icon-left ion-plus"
+                ng-repeat="matchingInterest in matchingInterests"
+                ng-click="addInterest(matchingInterest.name)">
+          {{ matchingInterest.name }}
+        </button>
+      </div>
+      <div class="text-center add-interest" ng-if="data.filter && matchingInterests.length === 0">
         <button class="button button-balanced icon-left ion-plus"
                 ng-click="addInterest()">
-          Add <strong>{{ data.filter }}</strong>
+          {{ data.filter }}
         </button>
       </div>
     </div>

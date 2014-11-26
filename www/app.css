@@ -7827,6 +7827,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   right: 10px;
   z-index: 3; }
 
+.tab1 .empty-profile-message {
+  padding-left: 15px; }
 .tab1 .interest-button {
   margin-right: 10px;
   margin-bottom: 10px; }

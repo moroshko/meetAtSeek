@@ -4,7 +4,7 @@ angular.module('shared').service('Users', function($q, FIREBASE_ROOT, Auth) {
   this.exists = function(username) {
     var defer = $q.defer();
     
-    usersRef.child(username).on('value', function(snapshot) {
+    usersRef.child(username).once('value', function(snapshot) {
       defer.resolve(snapshot.val() !== null);
     });
 
@@ -19,29 +19,28 @@ angular.module('shared').service('Users', function($q, FIREBASE_ROOT, Auth) {
     usersRef.child(username).set({
       firstName: firstName,
       lastName: lastName
-    }, function(error) {
-      if (error) {
-        defer.reject();
-      } else {
-        defer.resolve();
-      }
+    }, function() {
+      defer.resolve();
     });
 
     return defer.promise;
   };
 
-  this.addInterest = function(interest) {
+  this.addInterest = function(interestId) {
     var defer = $q.defer();
-    var data = {};
 
-    data[interest] = true;
+    usersRef.child(Auth.username()).child('interests').child(interestId).set(true, function() {
+      defer.resolve();
+    });
 
-    usersRef.child(Auth.username()).child('interests').update(data, function(error) {
-      if (error) {
-        defer.reject();
-      } else {
-        defer.resolve();
-      }
+    return defer.promise;
+  };
+
+  this.removeInterest = function(interestId) {
+    var defer = $q.defer();
+    
+    usersRef.child(Auth.username()).child('interests').child(interestId).remove(function() {
+      defer.resolve();
     });
 
     return defer.promise;

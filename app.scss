@@ -21,6 +21,13 @@ $ionicons-font-path: "lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "lib/ionic/scss/ionic";
 
+.tabs {
+  .tab-item.tab-item-active {
+    color: $positive;
+    border-color: $positive;
+  }
+}
+
 // App specific styles
 @import "login/login";
 @import "tab1/tab1";

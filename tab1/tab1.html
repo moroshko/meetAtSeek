@@ -29,11 +29,16 @@
           {{ matchingInterest.name }}
         </button>
       </div>
-      <div class="text-center add-interest" ng-if="data.filter && matchingInterests.length === 0">
+      <div class="text-center add-interest" 
+           ng-if="data.filter && matchingInterests.length === 0 && notInMyInterests(data.filter)">
         <button class="button button-balanced icon-left ion-plus"
                 ng-click="addInterest()">
           {{ data.filter }}
         </button>
+      </div>
+      <div class="text-center"
+           ng-if="data.filter && matchingInterests.length === 0 && !notInMyInterests(data.filter)">
+        Already in your interests
       </div>
     </div>
   </ion-content>

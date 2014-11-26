@@ -9,18 +9,21 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
     filter: ''
   };
 
-  function notInMyInterests(interestObj) {
+  $scope.notInMyInterests = function(interestObjOrName) {
+    var checkName = (typeof interestObjOrName === 'string');
+
     return $scope.interests.filter(function(interest) {
-      return interest.id === interestObj.id;
+      return checkName ? interest.name === interestObjOrName
+                       : interest.id === interestObjOrName.id;
     }).length === 0;
-  }
+  };
 
   $scope.$watch('data.filter', function(newValue, oldValue) {
     if (newValue === oldValue) {
       return;
     }
 
-    $scope.matchingInterests = allInterests.filter(notInMyInterests);
+    $scope.matchingInterests = allInterests.filter($scope.notInMyInterests);
 
     if (newValue.length > 0) {
       var regex = new RegExp($scope.data.filter.split('').join('[\\s\\S]*'), 'i');
@@ -46,7 +49,7 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
       $q.all(promises).then(function(interests) {
         PleaseWait.hide();
         $scope.interests = interests;
-        $scope.matchingInterests = allInterests.filter(notInMyInterests);
+        $scope.matchingInterests = allInterests.filter($scope.notInMyInterests);
         $scope.ready = true;      
       });
     });

@@ -75,6 +75,7 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
   $scope.onMyInterestsClick = function() {
     if (lastClickOnMyInterests !== null && Date.now() - lastClickOnMyInterests < 1000) {
       $state.go('login');
+      Auth.reset();
     } else {
       lastClickOnMyInterests = Date.now();
     }

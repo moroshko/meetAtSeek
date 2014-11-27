@@ -1,4 +1,5 @@
-angular.module('tab3', []).controller('Tab3Ctrl', function($scope, $q, Auth, Meetups, FIREBASE_ROOT) {
+angular.module('tab3', []).controller('Tab3Ctrl', function($scope, $q, $stateParams, Auth, Meetups, FIREBASE_ROOT) {
+  console.log($stateParams);
 
   var usersRef = new Firebase(FIREBASE_ROOT + '/users');
   $scope.ready = true;

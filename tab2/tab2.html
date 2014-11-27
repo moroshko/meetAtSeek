@@ -10,7 +10,7 @@
                 ng-repeat="interest in user.interests">
           {{ interest }}
         </button>
-        <button class="button invite-button">
+        <button class="button invite-button" ng-click="sendInvite(user.username)">
           <img src="images/meet-at-seek.png" width="32" height="32">
         </button>
       </div>

@@ -1,6 +1,7 @@
 .tab3 {
   .time-picker-row {
     display: flex;
+    height: 38px;
 
     > div {
       width: 16.6666667%;
@@ -19,5 +20,9 @@
     margin-top: 10px;
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .upcoming-time {
+    float: right;
+    font-size: 0.8em;
   }
 }

@@ -9,17 +9,25 @@ angular.module('starter', [
   'tab3'
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, FIREBASE_ROOT, Auth) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
+
     if(window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    var usersRef = new Firebase(FIREBASE_ROOT + '/users');
+
+    usersRef.child(Auth.username()).child('requests').on('value', function(snapshot) {
+      $rootScope.requestsCount =
+        (snapshot.val() === null ? 0 : Object.keys(snapshot.val()).length);
+    });
   });
 })
 
@@ -54,8 +62,26 @@ angular.module('starter', [
         }
       }
     })
-    .state('tab.tab3', {
-      url: '/tab3/:view/:username',
+    .state('tab.tab3-all', {
+      url: '/tab3/all/:view/:username',
+      views: {
+        'tab3': {
+          templateUrl: 'tab3/tab3.html',
+          controller: 'Tab3Ctrl'
+        }
+      }
+    })
+    .state('tab.tab3-new', {
+      url: '/tab3/new/:view/:username',
+      views: {
+        'tab3': {
+          templateUrl: 'tab3/tab3.html',
+          controller: 'Tab3Ctrl'
+        }
+      }
+    })
+    .state('tab.tab3-view', {
+      url: '/tab3/view/:view/:username',
       views: {
         'tab3': {
           templateUrl: 'tab3/tab3.html',

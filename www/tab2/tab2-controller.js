@@ -63,7 +63,7 @@ angular.module('tab2', []).controller('Tab2Ctrl', function(
   });
 
   $scope.sendInvite = function(username) {
-    $state.go('tab.tab3', {
+    $state.go('tab.tab3-new', {
       view: 'new',
       username: username
     });

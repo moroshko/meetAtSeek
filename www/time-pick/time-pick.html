@@ -8,13 +8,17 @@
 <div class="time-picker-row" ng-repeat="time in times">
   <div class="time-picker-time">{{ time }}</div>
   <div ng-repeat="day in days" class="text-center">
-    <label class="checkbox checkbox-stable">
-       <input type="checkbox" ng-model="availability[day.day + '|' + day.fullDate + '|' + time]">
-     </label>
+    <!-- NEW -->
+    <label class="checkbox checkbox-stable" 
+           ng-if="view === 'new'">
+      <input type="checkbox" ng-model="availability[day.day + '|' + day.fullDate + '|' + time]">
+    </label>
+
+    <!-- VIEW -->
+    <label class="checkbox checkbox-stable" 
+           ng-if="view === 'view' && availability[day.day + '|' + day.fullDate + '|' + time] !== undefined"
+           ng-click="onTimeSlotClick(day.day + '|' + day.fullDate + '|' + time)">
+      <input type="checkbox" ng-model="availability[day.day + '|' + day.fullDate + '|' + time]">
+    </label>
   </div>
-</div>
-<div class="text-center">
-  <button class="button button-energized invite-button" ng-click="invite()">
-    Invite
-  </button>
 </div>

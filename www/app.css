@@ -7882,7 +7882,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     top: 7px; }
 
 .tab3 .time-picker-row {
-  display: flex; }
+  display: flex;
+  height: 38px; }
   .tab3 .time-picker-row > div {
     width: 16.66667%; }
   .tab3 .time-picker-row .checkbox {
@@ -7895,3 +7896,6 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   margin-top: 10px;
   padding-left: 20px;
   padding-right: 20px; }
+.tab3 .upcoming-time {
+  float: right;
+  font-size: 0.8em; }

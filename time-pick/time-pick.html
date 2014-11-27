@@ -13,14 +13,14 @@
     <!-- NEW -->
     <label class="checkbox checkbox-stable" 
            ng-if="view === 'new'">
-      <input type="checkbox" ng-model="availability[day.day + '|' + day.fullDate + '|' + time]">
+      <input type="checkbox" ng-model="data.availability[day.day + '|' + day.fullDate + '|' + time]">
     </label>
 
     <!-- VIEW -->
     <label class="checkbox checkbox-stable" 
-           ng-if="view === 'view' && availability[day.day + '|' + day.fullDate + '|' + time] !== undefined"
+           ng-if="view === 'view' && data.availability[day.day + '|' + day.fullDate + '|' + time] !== undefined"
            ng-click="onTimeSlotClick(day.day + '|' + day.fullDate + '|' + time)">
-      <input type="checkbox" ng-model="availability[day.day + '|' + day.fullDate + '|' + time]">
+      <input type="checkbox" ng-model="data.availability[day.day + '|' + day.fullDate + '|' + time]">
     </label>
   </div>
 </div>

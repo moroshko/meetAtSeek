@@ -14,7 +14,10 @@ angular.module('shared').service('Auth', function(storage) {
   this.requestsCount = 0;
 
   this.setRequestsCount = function(count) {
-    console.log('set');
     this.requestsCount = count;
+  };
+
+  this.getRequestsCount = function() {
+    return this.requestsCount;
   };
 });

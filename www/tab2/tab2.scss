@@ -1,3 +1,28 @@
 .tab2 {
-  color: blue;
+  .badge {
+    left: 16px;
+    right: inherit;
+  }
+  .matching-interest {
+    min-height: 16px;
+    line-height: 16px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  .user-content {
+    position: relative;
+    padding-right: 80px;
+    min-height: 80px;
+    white-space: normal;
+  }
+  .invite-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    img {
+      position: relative;
+      top: 7px;
+    }
+  }
 }

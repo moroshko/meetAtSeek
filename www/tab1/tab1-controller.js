@@ -42,7 +42,7 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
       return;
     }
 
-    $scope.matchingInterests = allInterests.filter($scope.notInMyInterests);
+    $scope.matchingInterests = allInterests.filter($scope.notInMyInterests).sort(compareMatchingInterests);
 
     if (newValue.length > 0) {
       var regex = new RegExp($scope.data.filter.split('').join('[\\s\\S]*'), 'i');

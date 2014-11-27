@@ -69,8 +69,8 @@ angular.module('starter', [
 })
 
 // Production
-.constant('FIREBASE_ROOT', 'https://seekhack3.firebaseio.com');
+//.constant('FIREBASE_ROOT', 'https://seekhack3.firebaseio.com');
 
 // Development
-//.constant('FIREBASE_ROOT', 'https://test-seekhack3.firebaseio.com');
+.constant('FIREBASE_ROOT', 'https://test-seekhack3.firebaseio.com');
 

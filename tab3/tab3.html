@@ -1,5 +1,26 @@
-<ion-view class="tab3" title="Invitations">
+<ion-view class="tab3" title="Meetups">
   <ion-content class="padding">
-    Invitations here...
+    <div class="list" ng-if="ready">
+      <div class="item item-divider">
+        Upcoming
+      </div>
+      <div class="item" ng-repeat="upcomingMeetup in upcoming">
+        {{ upcomingMeetup.to }} {{ upcomingMeetup.from }}
+      </div>
+
+      <div class="item item-divider">
+        Requests
+      </div>
+      <div class="item" ng-repeat="requestedMeetup in requests">
+        {{ requestedMeetup.from }}
+      </div>
+
+      <div class="item item-divider">
+        Sent
+      </div>
+      <div class="item" ng-repeat="sentMeetup in sent">
+        {{ sentMeetup.to }}
+      </div>
+    </div>
   </ion-content>
 </ion-view>

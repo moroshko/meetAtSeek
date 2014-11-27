@@ -1,5 +1,5 @@
 angular.module('tab2', []).controller('Tab2Ctrl', function(
-  $q, $scope, PleaseWait, Auth, Users, Interests) {
+  $q, $scope, PleaseWait, Auth, Users, Interests, Meetups) {
 
   var myUsername = Auth.username();
 

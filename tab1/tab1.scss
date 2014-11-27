@@ -24,12 +24,15 @@
   .suggested-interests {
     margin-top: 50px;
   }
+  .add-interest-button-wrapper {
+    position: relative;
+  }
   .add-interest-button {
     padding-left: 8px;
     margin-right: 5px;
     position: absolute;
     z-index: 99999;
     right: 0;
-    top: 195px;
+    top: 9px;
   }
 }

@@ -13,8 +13,14 @@ angular.module('shared').service('Users', function($q, FIREBASE_ROOT, Auth) {
 
   this.add = function(username) {
     var defer = $q.defer();
-    var firstName = this.all[username].first;
-    var lastName = this.all[username].last;
+
+    if (angular.isDefined(this.all[username])) {
+      var firstName = this.all[username].first;
+      var lastName = this.all[username].last;
+    } else {
+      var firstName = username[0].toUpperCase() + '.';
+      var lastName = (username[1] || '').toUpperCase() + username.slice(2);
+    }
 
     usersRef.child(username).set({
       firstName: firstName,

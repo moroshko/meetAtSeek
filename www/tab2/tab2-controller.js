@@ -1,5 +1,5 @@
 angular.module('tab2', []).controller('Tab2Ctrl', function(
-  $q, $scope, PleaseWait, Auth, Users, Interests, Meetups) {
+  $q, $scope, $state, PleaseWait, Auth, Users, Interests, Meetups) {
 
   var myUsername = Auth.username();
 
@@ -71,4 +71,11 @@ angular.module('tab2', []).controller('Tab2Ctrl', function(
       PleaseWait.hide();
     });
   });
+
+  $scope.sendInvite = function(username) {
+    $state.go('tab.tab3', {
+      view: 'new',
+      username: username
+    });
+  };
 });

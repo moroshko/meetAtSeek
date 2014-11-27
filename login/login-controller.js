@@ -14,6 +14,8 @@ angular.module('login', ['shared']).controller('LoginCtrl', function($scope, $st
   $scope.login = function() {
     PleaseWait.show();
 
+    $scope.user.username = $scope.user.username.toLowerCase();
+
     Users.exists($scope.user.username).then(function(exists) {
       if (exists) {
         onLogin();

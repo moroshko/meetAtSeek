@@ -1,5 +1,5 @@
 <ion-view class="tab1" title="My Profile">
-  <ion-content class="padding">
+  <ion-content class="padding" scroll="false">
     <div class="list" ng-if="ready">
       <div class="item item-divider my-interests">
         My Interests
@@ -10,7 +10,7 @@
           <i class="icon ion-ios7-arrow-forward"></i>
         </button>
       </div>
-      <div class="padding-top">
+      <ion-scroll class="padding-top my-interests-wrapper">
         <button class="button button-energized interest-button icon-right ion-ios7-close-empty"
                 ng-repeat="interest in interests"
                 ng-click="removeInterest(interest.id)">
@@ -20,11 +20,11 @@
           Your profile is empty <i class="icon ion-sad"></i><br>
           Add interests by clicking the buttons below
         </div>
-      </div>
+      </ion-scroll>
       <div class="item item-divider suggested-interests" ng-click="onInterestsPoolClick()">
         Interests Pool
       </div>
-      <div class="add-interest-button-wrapper">
+      <div class="padding-top search-field-wrapper">
         <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
           <input type="text" placeholder="Search" ng-model="data.filter">
@@ -34,13 +34,13 @@
                 ng-if="data.filter && notInMyInterests(data.filter)">
         </button>
       </div>
-      <div class="padding-top">
+      <ion-scroll class="padding-top interests-pool-wrapper">
         <button class="button button-stable interest-button icon-left ion-plus"
                 ng-repeat="matchingInterest in matchingInterests"
                 ng-click="addInterest(matchingInterest.name)">
           {{ matchingInterest.name }} ({{ usersCount(matchingInterest) }})
         </button>
-      </div>
+      </ion-scroll>
       <div class="text-center"
            ng-if="data.filter && matchingInterests.length === 0 && !notInMyInterests(data.filter)">
         Already in your interests

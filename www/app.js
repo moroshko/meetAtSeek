@@ -9,7 +9,7 @@ angular.module('starter', [
   'tab3'
 ])
 
-.run(function($ionicPlatform, $rootScope, $timeout, FIREBASE_ROOT, Auth) {
+.run(function($ionicPlatform, $timeout, FIREBASE_ROOT, $rootScope, Auth) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -22,12 +22,13 @@ angular.module('starter', [
       StatusBar.styleDefault();
     }
 
+    $rootScope.Auth = Auth;
+
     $timeout(function() {
       var usersRef = new Firebase(FIREBASE_ROOT + '/users');
 
       usersRef.child(Auth.username()).child('requests').on('value', function(snapshot) {
-        $rootScope.requestsCount =
-          (snapshot.val() === null ? 0 : Object.keys(snapshot.val()).length);
+        Auth.setRequestsCount(snapshot.val() === null ? 0 : Object.keys(snapshot.val()).length);
       });
     }, 500);
   });

@@ -87,9 +87,15 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
   }
 
   $scope.availability = {};
+  $scope.place = '';
 
   if ($scope.view === 'new') {
     setDayAndTimes();
+
+    $scope.setPlace1 = function(place) {
+      console.log(Auth.requestsCount);
+      //$scope.place = place;
+    };
 
     $scope.invite = function() {
       var requestedTimes = [];

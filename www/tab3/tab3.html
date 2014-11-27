@@ -1,5 +1,11 @@
 <ion-view class="tab3" title="{{ title }}">
   <ion-content class="padding">
+    <!-- EMPTY STATE -->
+    <div ng-if="!upcoming.length && !requests.length && !sent.length">
+      <button class="button button-energized button-block" ui-sref="tab.tab2">
+        Go ahead and invite someone for a coffee
+      </button>
+    </div>
     <!-- ALL -->
     <div class="list" ng-if="ready && view === 'all'">
       <div ng-if="upcoming.length">

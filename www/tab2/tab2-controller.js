@@ -20,6 +20,12 @@ angular.module('tab2', []).controller('Tab2Ctrl', function(
   PleaseWait.show();
 
   Users.getInterests().then(function(interestIds) {
+    if (Object.keys(interestIds).length === 0) {
+      $scope.empty = true;
+      PleaseWait.hide();
+      return;
+    }
+
     var promises = Object.keys(interestIds).map(function(interestId) {
       return Interests.getById(interestId);
     });

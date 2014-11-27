@@ -2,7 +2,7 @@
   <ion-content class="padding">
     <div class="list" ng-if="ready">
       <div class="item item-divider my-interests">
-        My Interests
+        <span ng-click="onMyInterestsClick()">My Interests</span>
         <button class="button button-positive button-small find-seekers-button"
                 ng-if="interests.length > 0"
                 ng-click="findSeekers()">

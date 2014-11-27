@@ -52,6 +52,16 @@ angular.module('shared').service('Users', function($q, FIREBASE_ROOT, Auth) {
     return defer.promise;
   };
 
+  this.getInterests = function() {
+    var defer = $q.defer();
+    
+    usersRef.child(Auth.username()).child('interests').once('value', function(snapshot) {
+      defer.resolve(snapshot.val() || {});
+    });
+
+    return defer.promise;
+  };
+
   this.all = {
     "aomsby": {
       "first": "Aaron",

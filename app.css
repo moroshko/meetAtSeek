@@ -7845,7 +7845,7 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     margin-left: 5px;
     opacity: 0.5; }
 .tab1 .suggested-interests {
-  margin-top: 30px; }
+  margin-top: 10px; }
 .tab1 .search-field-wrapper {
   position: relative; }
 .tab1 .add-interest-button {
@@ -7860,8 +7860,26 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .tab1 .interests-pool-wrapper {
   max-height: 200px; }
 
-.tab2 {
-  color: blue; }
+.tab2 .badge {
+  left: 16px;
+  right: inherit; }
+.tab2 .matching-interest {
+  min-height: 16px;
+  line-height: 16px;
+  margin-right: 5px;
+  margin-bottom: 5px; }
+.tab2 .user-content {
+  position: relative;
+  padding-right: 80px;
+  min-height: 80px;
+  white-space: normal; }
+.tab2 .invite-button {
+  position: absolute;
+  top: 15px;
+  right: 15px; }
+  .tab2 .invite-button img {
+    position: relative;
+    top: 7px; }
 
 .tab3 {
   color: green; }

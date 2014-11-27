@@ -1,5 +1,19 @@
 <ion-view class="tab2" title="Find SEEKers">
   <ion-content class="padding">
-    Search here...
+    <div class="card" ng-repeat="user in matchingUsersArray">
+      <div class="item item-divider item-icon-left">
+        <span class="badge badge-energized">{{ user.interests.length }}</span>
+        {{ getName(user.username) }}
+      </div>
+      <div class="item user-content">
+        <button class="button button-small matching-interest"
+                ng-repeat="interest in user.interests">
+          {{ interest }}
+        </button>
+        <button class="button invite-button">
+          <img src="images/meet-at-seek.png" width="32" height="32">
+        </button>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

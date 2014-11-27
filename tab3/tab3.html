@@ -1,33 +1,79 @@
 <ion-view class="tab3" title="{{ title }}">
   <ion-content class="padding">
+    <!-- ALL -->
     <div class="list" ng-if="ready && view === 'all'">
-      <div class="item item-divider">
-        Upcoming
-      </div>
-      <div class="item" ng-repeat="upcomingMeetup in upcoming">
-        {{ upcomingMeetup.to }} {{ upcomingMeetup.from }}
+      <div ng-if="upcoming.length">
+        <div class="item item-divider">
+          Upcoming
+        </div>
+        <div class="item" ng-repeat="upcomingMeetup in upcoming">
+          {{ upcomingUserName(upcomingMeetup) }}
+          <span class="upcoming-time">
+            {{ upcomingMeetup.acceptedTime.day }},
+            {{ acceptedTimeDate(upcomingMeetup.acceptedTime.date) }},
+            {{ upcomingMeetup.acceptedTime.time }}
+          </span>
+        </div>
       </div>
 
-      <div class="item item-divider">
-        Requests
-      </div>
-      <div class="item" ng-repeat="requestedMeetup in requests">
-        {{ Users.getName(requestedMeetup.from) }}
+      <div ng-if="requests.length">
+        <div class="item item-divider">
+          Requests
+        </div>
+        <div class="item item-button-right"
+             ng-repeat="requestedMeetup in requests">
+          {{ Users.getName(requestedMeetup.from) }}
+          <button class="button button-stable"
+                  ng-click="viewRequestedMeetup(requestedMeetup)">
+            View
+          </button>
+        </div>
       </div>
 
-      <div class="item item-divider">
-        Sent
-      </div>
-      <div class="item" ng-repeat="sentMeetup in sent">
-        {{ Users.getName(sentMeetup.to) }}
+      <div ng-if="sent.length">
+        <div class="item item-divider">
+          Sent
+        </div>
+        <div class="item" ng-repeat="sentMeetup in sent">
+          {{ Users.getName(sentMeetup.to) }}
+        </div>
       </div>
     </div>
+
+    <!-- NEW -->
     <div ng-if="view === 'new'">
       <p class="text-center padding-bottom h4">
         Please select your availability:
       </p>
       <ng-include src="'time-pick/time-pick.html'">
       </ng-include>
+      <div class="text-center">
+        <button class="button button-energized invite-button" ng-click="invite()">
+          Invite
+        </button>
+        <button class="button button-clear button-dark padding-top" ng-click="backToAll()">
+          cancel
+        </button>
+      </div>
+    </div>
+
+    <!-- VIEW -->
+    <div ng-if="ready && view === 'view'">
+      <p class="text-center padding-bottom h4">
+        Please accept one of the proposed times:
+      </p>
+      <ng-include src="'time-pick/time-pick.html'">
+      </ng-include>
+      <div class="text-center">
+        <button class="button button-energized invite-button"
+                ng-disabled="!timeSlotSelected"
+                ng-click="letsMeet()">
+          Let's meet!
+        </button>
+        <button class="button button-clear button-dark padding-top" ng-click="backToAll()">
+          cancel
+        </button>
+      </div>
     </div>
   </ion-content>
 </ion-view>

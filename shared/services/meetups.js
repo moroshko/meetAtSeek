@@ -44,6 +44,18 @@ angular.module('shared').service('Meetups', function($q, FIREBASE_ROOT, Auth) {
     return defer.promise;
   };
 
+  self.addAcceptedTime = function(meetupId, acceptedTime) {
+    var defer = $q.defer();
+
+    meetupsRef.child(meetupId).update({
+      acceptedTime: acceptedTime
+    }, function() {
+      defer.resolve();
+    });
+
+    return defer.promise;
+  };
+
   self.getById = function(meetupId) {
     var defer = $q.defer();
 

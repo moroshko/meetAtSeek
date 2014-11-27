@@ -22,9 +22,9 @@
     }
   }
   .suggested-interests {
-    margin-top: 50px;
+    margin-top: 30px;
   }
-  .add-interest-button-wrapper {
+  .search-field-wrapper {
     position: relative;
   }
   .add-interest-button {
@@ -33,6 +33,12 @@
     position: absolute;
     z-index: 99999;
     right: 0;
-    top: 9px;
+    top: 17px;
+  }
+  .my-interests-wrapper {
+    max-height: 200px;
+  }
+  .interests-pool-wrapper {
+    max-height: 200px;
   }
 }

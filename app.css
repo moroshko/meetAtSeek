@@ -7819,8 +7819,9 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   color: #4a87ee;
   border-color: #4a87ee; }
 
-.login h1 {
-  font-size: 100px; }
+.login .logo {
+  padding-top: 30px;
+  padding-bottom: 30px; }
 .login .show-password-toggle {
   position: absolute;
   top: 222px;

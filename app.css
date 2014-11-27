@@ -7881,5 +7881,17 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     position: relative;
     top: 7px; }
 
-.tab3 {
-  color: green; }
+.tab3 .time-picker-row {
+  display: flex; }
+  .tab3 .time-picker-row > div {
+    width: 16.66667%; }
+  .tab3 .time-picker-row .checkbox {
+    padding: 5px 0 0 0; }
+.tab3 .time-picker-time {
+  text-align: right;
+  padding-right: 10px;
+  padding-top: 8px; }
+.tab3 .invite-button {
+  margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px; }

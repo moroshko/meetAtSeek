@@ -3,7 +3,7 @@
     <div class="card" ng-repeat="user in matchingUsersArray">
       <div class="item item-divider item-icon-left">
         <span class="badge badge-energized">{{ user.interests.length }}</span>
-        {{ getName(user.username) }}
+        {{ Users.getName(user.username) }}
       </div>
       <div class="item user-content">
         <button class="button button-small matching-interest"

@@ -1,6 +1,6 @@
-<ion-view class="tab3" title="Meetups">
+<ion-view class="tab3" title="{{ title }}">
   <ion-content class="padding">
-    <div class="list" ng-if="ready">
+    <div class="list" ng-if="ready && view === 'all'">
       <div class="item item-divider">
         Upcoming
       </div>
@@ -12,15 +12,22 @@
         Requests
       </div>
       <div class="item" ng-repeat="requestedMeetup in requests">
-        {{ requestedMeetup.from }}
+        {{ Users.getName(requestedMeetup.from) }}
       </div>
 
       <div class="item item-divider">
         Sent
       </div>
       <div class="item" ng-repeat="sentMeetup in sent">
-        {{ sentMeetup.to }}
+        {{ Users.getName(sentMeetup.to) }}
       </div>
+    </div>
+    <div ng-if="view === 'new'">
+      <p class="text-center padding-bottom h4">
+        Please select your availability:
+      </p>
+      <ng-include src="'time-pick/time-pick.html'">
+      </ng-include>
     </div>
   </ion-content>
 </ion-view>

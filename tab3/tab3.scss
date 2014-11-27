@@ -1,3 +1,23 @@
 .tab3 {
-  //color: green;
+  .time-picker-row {
+    display: flex;
+
+    > div {
+      width: 16.6666667%;
+    }
+
+    .checkbox {
+      padding: 5px 0 0 0;
+    }
+  }
+  .time-picker-time {
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 8px;
+  }
+  .invite-button {
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }

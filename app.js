@@ -6,8 +6,7 @@ angular.module('starter', [
   'login',
   'tab1',
   'tab2',
-  'tab3',
-  'timePick'
+  'tab3'
 ])
 
 .run(function($ionicPlatform) {
@@ -56,20 +55,11 @@ angular.module('starter', [
       }
     })
     .state('tab.tab3', {
-      url: '/tab3',
+      url: '/tab3/:view/:username',
       views: {
         'tab3': {
           templateUrl: 'tab3/tab3.html',
           controller: 'Tab3Ctrl'
-        }
-      }
-    })
-    .state('tab.timePick', {
-      url: '/time-pick',
-      views: {
-        'time-pick': {
-          templateUrl: 'time-pick/time-pick.html',
-          controller: 'TimePickCtrl'
         }
       }
     });

@@ -1,8 +1,14 @@
 <ion-view class="tab1" title="My Profile">
   <ion-content class="padding">
     <div class="list" ng-if="ready">
-      <div class="item item-divider" ng-click="onMyInterestsClick()">
+      <div class="item item-divider my-interests" ng-click="onMyInterestsClick()">
         My Interests
+        <button class="button button-positive button-small find-seekers-button"
+                ng-if="interests.length > 0"
+                ng-click="findSeekers()">
+          Find SEEKers
+          <i class="icon ion-ios7-arrow-forward"></i>
+        </button>
       </div>
       <div class="padding-top">
         <button class="button button-energized interest-button icon-right ion-ios7-close-empty"

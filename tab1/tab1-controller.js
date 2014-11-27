@@ -99,4 +99,8 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
       lastClickOnMyInterests = Date.now();
     }
   };
+
+  $scope.findSeekers = function() {
+    $state.go('tab.tab2');
+  };
 });

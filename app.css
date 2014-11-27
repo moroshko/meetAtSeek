@@ -7827,6 +7827,13 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   right: 10px;
   z-index: 3; }
 
+.tab1 .my-interests {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  line-height: 31px; }
+.tab1 .find-seekers-button {
+  float: right; }
 .tab1 .empty-profile-message {
   padding-left: 15px; }
 .tab1 .interest-button {

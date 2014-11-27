@@ -1,7 +1,9 @@
 <div class="time-picker-row">
   <div></div>
   <div ng-repeat="day in days" class="text-center">
-    {{ day.date }}<br>
+    <span ng-if="$index === 0" class="today">Today</span>
+    <span ng-if="$index > 0">{{ day.date }}</span>
+    <br>
     {{ day.day }} 
   </div>
 </div>

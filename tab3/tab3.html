@@ -51,12 +51,31 @@
       <ng-include src="'time-pick/time-pick.html'">
       </ng-include>
       <div class="text-center">
-        <button class="button button-energized invite-button" ng-click="invite()">
-          Invite
-        </button>
-        <button class="button button-clear button-dark padding-top" ng-click="backToAll()">
-          cancel
-        </button>
+        <div class="place-wrapper">
+          <button class="button button-small"
+                  ng-class="{ 'button-stable': place !== 'hub', 'button-dark': place === 'hub' }"
+                  ng-click="setPlace('hub')">
+            Hub (Level 3)
+          </button>
+          <button class="button button-stable button-small"
+                  ng-class="{ 'button-stable': place !== 'lobby', 'button-dark': place === 'lobby' }"
+                  ng-click="setPlace('lobby')">
+            Lobby (Ground floor)
+          </button>
+        </div>
+        <div class="list list-inset message-wrapper">
+          <label class="item item-input">
+            <input type="text" placeholder="Message (Optional)">
+          </label>
+        </div>
+        <div class="buttons-wrapper">
+          <button class="button button-energized" ng-click="invite()">
+            Invite
+          </button>
+          <button class="button button-clear button-dark" ng-click="backToAll()">
+            cancel
+          </button>
+        </div>
       </div>
     </div>
 

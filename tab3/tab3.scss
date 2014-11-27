@@ -25,4 +25,18 @@
     float: right;
     font-size: 0.8em;
   }
+  .message-wrapper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .place-wrapper {
+    margin-top: 5px;
+  }
+  .buttons-wrapper {
+    margin-top: 5px;
+  }
+  .today {
+    color: $energized;
+    font-weight: bold;
+  }
 }

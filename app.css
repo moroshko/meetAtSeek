@@ -7899,3 +7899,13 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .tab3 .upcoming-time {
   float: right;
   font-size: 0.8em; }
+.tab3 .message-wrapper {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+.tab3 .place-wrapper {
+  margin-top: 5px; }
+.tab3 .buttons-wrapper {
+  margin-top: 5px; }
+.tab3 .today {
+  color: #E60A7C;
+  font-weight: bold; }

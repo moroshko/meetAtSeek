@@ -1,9 +1,20 @@
-<ion-view class="time-pick" title="Pick Time">
-  <ion-content class="padding">
-    <div class="list" ng-if="ready">
-      <div class="item item-divider">
-        Upcoming
-      </div>
-    </div>
-  </ion-content>
-</ion-view>
+<div class="time-picker-row">
+  <div></div>
+  <div ng-repeat="day in days" class="text-center">
+    {{ day.date }}<br>
+    {{ day.day }} 
+  </div>
+</div>
+<div class="time-picker-row" ng-repeat="time in times">
+  <div class="time-picker-time">{{ time }}</div>
+  <div ng-repeat="day in days" class="text-center">
+    <label class="checkbox checkbox-stable">
+       <input type="checkbox" ng-model="availability[day.day + '|' + day.fullDate + '|' + time]">
+     </label>
+  </div>
+</div>
+<div class="text-center">
+  <button class="button button-energized invite-button" ng-click="invite()">
+    Invite
+  </button>
+</div>

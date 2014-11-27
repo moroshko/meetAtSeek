@@ -3,17 +3,7 @@ angular.module('tab2', []).controller('Tab2Ctrl', function(
 
   var myUsername = Auth.username();
 
-  $scope.getName = function(username) {
-    if (angular.isDefined(Users.all[username])) {
-      var firstName = Users.all[username].first;
-      var lastName = Users.all[username].last;
-    } else {
-      var firstName = username[0].toUpperCase() + '.';
-      var lastName = (username[1] || '').toUpperCase() + username.slice(2);
-    }
-
-    return firstName + ' ' + lastName;
-  };
+  $scope.Users = Users;
 
   function compareByInterestsCount(user1, user2) {
     if (user1.interests.length > user2.interests.length) {

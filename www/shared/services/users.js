@@ -111,6 +111,18 @@ angular.module('shared').service('Users', function($q, FIREBASE_ROOT, Auth) {
     return defer.promise;
   };
 
+  this.getName = function(username) {
+    if (angular.isDefined(this.all[username])) {
+      var firstName = this.all[username].first;
+      var lastName = this.all[username].last;
+    } else {
+      var firstName = username[0].toUpperCase() + '.';
+      var lastName = (username[1] || '').toUpperCase() + username.slice(2);
+    }
+
+    return firstName + ' ' + lastName;
+  };
+
   this.all = {
     "aomsby": {
       "first": "Aaron",

@@ -103,4 +103,8 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
   $scope.findSeekers = function() {
     $state.go('tab.tab2');
   };
+
+  $scope.onMyInterestsClick = function() {
+    $state.go($state.current, {}, { reload: true });
+  };
 });

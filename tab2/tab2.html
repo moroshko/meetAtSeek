@@ -1,5 +1,11 @@
 <ion-view class="tab2" title="Find SEEKers">
   <ion-content class="padding">
+    <div ng-if="empty">
+      <button class="button button-energized button-block" ui-sref="tab.tab1">
+        To find SEEKers<br>
+        please add some interests to your profile
+      </button>
+    </div>
     <div class="card" ng-repeat="user in matchingUsersArray">
       <div class="item item-divider item-icon-left">
         <span class="badge badge-energized">{{ user.interests.length }}</span>

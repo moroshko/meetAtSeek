@@ -54,11 +54,60 @@ angular.module('shared').service('Users', function($q, FIREBASE_ROOT, Auth) {
 
   this.getInterests = function() {
     var defer = $q.defer();
-    
+
     usersRef.child(Auth.username()).child('interests').once('value', function(snapshot) {
       defer.resolve(snapshot.val() || {});
     });
 
+    return defer.promise;
+  };
+
+
+  this.addRequest = function(username, meetupId) {
+    var defer = $q.defer();
+    usersRef.child(username).child('requests').child(meetupId).set(true, function() {
+      defer.resolve();
+    });
+    return defer.promise;
+  };
+
+  this.removeRequest = function(username, meetupId) {
+    var defer = $q.defer();
+    usersRef.child(username).child('requests').child(meetupId).remove(function() {
+      defer.resolve();
+    });
+    return defer.promise;
+  };
+
+  this.addSent = function(username, meetupId) {
+    var defer = $q.defer();
+    usersRef.child(username).child('sent').child(meetupId).set(true, function() {
+      defer.resolve();
+    });
+    return defer.promise;
+  };
+
+  this.removeSent = function(username, meetupId) {
+    var defer = $q.defer();
+    usersRef.child(username).child('sent').child(meetupId).remove(function() {
+      defer.resolve();
+    });
+    return defer.promise;
+  };
+
+  this.addUpcoming = function(username, meetupId) {
+    var defer = $q.defer();
+    usersRef.child(username).child('upcoming').child(meetupId).set(true, function() {
+      defer.resolve();
+    });
+    return defer.promise;
+  };
+
+  this.removeUpcoming = function(username, meetupId) {
+    var defer = $q.defer();
+    usersRef.child(username).child('upcoming').child(meetupId).remove(function() {
+      defer.resolve();
+    });
     return defer.promise;
   };
 

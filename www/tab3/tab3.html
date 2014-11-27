@@ -65,11 +65,13 @@
         </div>
         <div class="list list-inset message-wrapper">
           <label class="item item-input">
-            <input type="text" placeholder="Message (Optional)">
+            <input type="text" placeholder="Message (Optional)" ng-model="data.message">
           </label>
         </div>
         <div class="buttons-wrapper">
-          <button class="button button-energized" ng-click="invite()">
+          <button class="button button-energized" 
+                  ng-disabled="!((place === 'hub' || place === 'lobby') && availabilityIsSet())"
+                  ng-click="invite()">
             Invite
           </button>
           <button class="button button-clear button-dark" ng-click="backToAll()">

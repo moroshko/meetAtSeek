@@ -86,22 +86,35 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
     }
   }
 
-  $scope.availability = {};
   $scope.place = '';
+  $scope.data = {
+    message: '',
+    availability: {}
+  };
 
   if ($scope.view === 'new') {
+    var requestsCount = Auth.getRequestsCount();
+
     setDayAndTimes();
 
-    $scope.setPlace1 = function(place) {
-      console.log(Auth.requestsCount);
-      //$scope.place = place;
+    $scope.setPlace = function(place) {
+      Auth.setRequestsCount(requestsCount);
+      $scope.place = place;
+    };
+
+    $scope.$watch('data', function() {
+      Auth.setRequestsCount(requestsCount);
+    }, true);
+
+    $scope.availabilityIsSet = function() {
+      return Object.keys($scope.data.availability).length > 0;
     };
 
     $scope.invite = function() {
       var requestedTimes = [];
 
-      for (var pipeSeparatedStr in $scope.availability) {
-        if ($scope.availability[pipeSeparatedStr] === true) {
+      for (var pipeSeparatedStr in $scope.data.availability) {
+        if ($scope.data.availability[pipeSeparatedStr] === true) {
           var parts = pipeSeparatedStr.split('|');
 
           requestedTimes.push({
@@ -112,7 +125,7 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
         }
       }
 
-      Meetups.add($stateParams.username, requestedTimes).then(function(meetupId) {
+      Meetups.add($stateParams.username, requestedTimes, $scope.data.message).then(function(meetupId) {
         Users.addRequest($stateParams.username, meetupId).then(function() {
           Users.addSent(Auth.username(), meetupId).then(function() {
             $state.go('tab.tab3-all', {
@@ -203,23 +216,23 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
       for (var i = 0, len = meetup.requestedTimes.length; i < len; i++) {
         var requestedTime = meetup.requestedTimes[i];
 
-        $scope.availability[requestedTime.day + '|' + requestedTime.date + '|' + requestedTime.time] = false;
+        $scope.data.availability[requestedTime.day + '|' + requestedTime.date + '|' + requestedTime.time] = false;
       }
 
       $scope.timeSlotSelected = false;
 
       $scope.onTimeSlotClick = function(pipeSeparatedStr) {
-        for (var key in $scope.availability) {
-          $scope.availability[key] = false;
+        for (var key in $scope.data.availability) {
+          $scope.data.availability[key] = false;
         }
 
-        $scope.availability[pipeSeparatedStr] = true;
+        $scope.data.availability[pipeSeparatedStr] = true;
         $scope.timeSlotSelected = true;
       };
 
       $scope.letsMeet = function() {
-        for (var key in $scope.availability) {
-          if ($scope.availability[key] === true) {
+        for (var key in $scope.data.availability) {
+          if ($scope.data.availability[key] === true) {
             var parts = key.split('|');
             var acceptedTime = {
               date: parts[1],

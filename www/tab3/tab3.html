@@ -6,6 +6,7 @@
         Go ahead and invite someone for a coffee
       </button>
     </div>
+
     <!-- ALL -->
     <div class="list" ng-if="ready && view === 'all'">
       <div ng-if="upcoming.length">
@@ -19,6 +20,9 @@
             {{ acceptedTimeDate(upcomingMeetup.acceptedTime.date) }},
             {{ upcomingMeetup.acceptedTime.time }}
           </span>
+          <p ng-if="upcomingMeetup.message">
+            {{ upcomingMeetup.message }}
+          </p>
         </div>
       </div>
 
@@ -33,6 +37,9 @@
                   ng-click="viewRequestedMeetup(requestedMeetup)">
             View
           </button>
+          <p ng-if="requestedMeetup.message">
+            {{ requestedMeetup.message }}
+          </p>
         </div>
       </div>
 
@@ -42,6 +49,9 @@
         </div>
         <div class="item" ng-repeat="sentMeetup in sent">
           {{ Users.getName(sentMeetup.to) }}
+          <p ng-if="sentMeetup.message">
+            {{ sentMeetup.message }}
+          </p>
         </div>
       </div>
     </div>

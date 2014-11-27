@@ -89,14 +89,14 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
     });
   };
 
-  var lastClickOnMyInterests = null;
+  var lastClick = null;
 
-  $scope.onMyInterestsClick = function() {
-    if (lastClickOnMyInterests !== null && Date.now() - lastClickOnMyInterests < 1000) {
+  $scope.onInterestsPoolClick = function() {
+    if (lastClick !== null && Date.now() - lastClick < 1000) {
       $state.go('login');
       Auth.reset();
     } else {
-      lastClickOnMyInterests = Date.now();
+      lastClick = Date.now();
     }
   };
 

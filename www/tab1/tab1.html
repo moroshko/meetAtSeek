@@ -1,7 +1,7 @@
 <ion-view class="tab1" title="My Profile">
   <ion-content class="padding">
     <div class="list" ng-if="ready">
-      <div class="item item-divider my-interests" ng-click="onMyInterestsClick()">
+      <div class="item item-divider my-interests">
         My Interests
         <button class="button button-positive button-small find-seekers-button"
                 ng-if="interests.length > 0"
@@ -21,7 +21,7 @@
           Add interests by clicking the buttons below
         </div>
       </div>
-      <div class="item item-divider suggested-interests">
+      <div class="item item-divider suggested-interests" ng-click="onInterestsPoolClick()">
         Interests Pool
       </div>
       <label class="item item-input">

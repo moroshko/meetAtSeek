@@ -78,7 +78,6 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
     Interests.addUserTo(interest || $scope.data.filter).then(function(interestId) {
       Users.addInterest(interestId).then(function() {
         $scope.data.filter = '';
-        $scope.matchingInterests = [];
       });
     });
   };

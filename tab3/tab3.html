@@ -1,7 +1,7 @@
 <ion-view class="tab3" title="{{ title }}">
   <ion-content class="padding">
     <!-- EMPTY STATE -->
-    <div ng-if="!upcoming.length && !requests.length && !sent.length">
+    <div ng-if="ready && view === 'all' && !upcoming.length && !requests.length && !sent.length">
       <button class="button button-energized button-block" ui-sref="tab.tab2">
         Go ahead and invite someone for a coffee
       </button>
@@ -48,9 +48,6 @@
 
     <!-- NEW -->
     <div ng-if="view === 'new'">
-      <p class="text-center padding-bottom h4">
-        Please select your availability:
-      </p>
       <ng-include src="'time-pick/time-pick.html'">
       </ng-include>
       <div class="text-center">

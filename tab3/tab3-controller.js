@@ -132,6 +132,7 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
     allPromises = allPromises.concat(requestsPromises, sentPromises, upcomingPromises);
   
     PleaseWait.show();
+    $scope.ready = false;
 
     $q.all(allPromises).then(function () {
       $scope.ready = true;

@@ -24,14 +24,16 @@
       <div class="item item-divider suggested-interests" ng-click="onInterestsPoolClick()">
         Interests Pool
       </div>
-      <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search" ng-model="data.filter">
-      </label>
-      <button class="button button-balanced button-small icon-left ion-plus add-interest-button"
-              ng-click="addInterest()"
-              ng-if="data.filter && notInMyInterests(data.filter)">
-      </button>
+      <div class="add-interest-button-wrapper">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-model="data.filter">
+        </label>
+        <button class="button button-balanced button-small icon-left ion-plus add-interest-button"
+                ng-click="addInterest()"
+                ng-if="data.filter && notInMyInterests(data.filter)">
+        </button>
+      </div>
       <div class="padding-top">
         <button class="button button-stable interest-button icon-left ion-plus"
                 ng-repeat="matchingInterest in matchingInterests"

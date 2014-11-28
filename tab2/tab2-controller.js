@@ -19,7 +19,7 @@ angular.module('tab2', []).controller('Tab2Ctrl', function(
 
   PleaseWait.show();
 
-  Users.getInterests().then(function(interestIds) {
+  Users.getInterests(Auth.username()).then(function(interestIds) {
     if (Object.keys(interestIds).length === 0) {
       $scope.empty = true;
       PleaseWait.hide();

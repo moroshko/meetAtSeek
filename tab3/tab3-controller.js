@@ -1,5 +1,5 @@
 angular.module('tab3', []).controller('Tab3Ctrl', function(
-  $scope, $q, $state, $stateParams, dateFilter, PleaseWait, Auth, Meetups, Users, FIREBASE_ROOT) {
+  $scope, $q, $state, $stateParams, dateFilter, PleaseWait, Auth, Meetups, Interests, Users, FIREBASE_ROOT) {
 
   if ($stateParams.view === 'new') {
     $scope.view = 'new';
@@ -46,10 +46,51 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
 
       $q.all(promises).then(function (meetups) {
         $scope[type] = meetups;
-        defer.resolve(meetups);
+        var interestPromises = [];
+        for (var i = 0; i < meetups.length; i++) {
+          var interestsPromise = addCommonInterests(meetups[i]);
+          interestPromises.push(interestsPromise);
+        }
+        $q.all(interestPromises).then(function() {
+          defer.resolve(meetups);
+        });
       });
     });
 
+    return defer.promise;
+  }
+
+  function addCommonInterests(meetup) {
+    var defer = $q.defer();
+
+    var username1 = meetup.to;
+    var username2 = meetup.from;
+
+    Users.getInterests(username1).then(function (interest1Ids) {
+      var interest1IdKeys = Object.keys(interest1Ids);
+
+      Users.getInterests(username2).then(function (interest2Ids) {
+        var interest2IdKeys = Object.keys(interest2Ids);
+
+        var matches = [];
+        for(var i = 0; i < interest1IdKeys.length; i++) {
+          for(var j = 0; j < interest2IdKeys.length; j++) {
+            if (interest1IdKeys[i] === interest2IdKeys[j]) {
+              matches.push(interest1IdKeys[i]);
+            }
+          }
+        }
+
+        var promises = matches.map(function(interestId) {
+          return Interests.getById(interestId);
+        });
+
+        $q.all(promises).then(function(interests) {
+          meetup.interests = interests;
+          defer.resolve(interests);
+        })
+      });
+    });
     return defer.promise;
   }
 
@@ -135,7 +176,7 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
         });
       });
     };
-  };
+  }
 
   $scope.backToAll = function() {
     $state.go('tab.tab3-all', {

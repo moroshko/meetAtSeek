@@ -52,10 +52,10 @@ angular.module('shared').service('Users', function($q, FIREBASE_ROOT, Auth) {
     return defer.promise;
   };
 
-  this.getInterests = function() {
+  this.getInterests = function(username) {
     var defer = $q.defer();
 
-    usersRef.child(Auth.username()).child('interests').once('value', function(snapshot) {
+    usersRef.child(username).child('interests').once('value', function(snapshot) {
       defer.resolve(snapshot.val() || {});
     });
 

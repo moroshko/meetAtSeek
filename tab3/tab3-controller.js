@@ -178,6 +178,26 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
     };
   }
 
+  function upcomingCompare(up1, up2) {
+    if (up1.acceptedTime.date < up2.acceptedTime.date) {
+      return -1;
+    }
+
+    if (up1.acceptedTime.date > up2.acceptedTime.date) {
+      return 1;
+    }
+
+    if (up1.acceptedTime.time < up2.acceptedTime.time) {
+      return -1;
+    }
+
+    if (up1.acceptedTime.time > up2.acceptedTime.time) {
+      return 1;
+    }
+
+    return 0;
+  }
+
   $scope.backToAll = function() {
     $state.go('tab.tab3-all', {
       view: 'all'
@@ -197,25 +217,7 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
     $q.all(allPromises).then(function () {
       $scope.ready = true;
 
-      $scope.upcoming.sort(function(up1, up2) {
-        if (up1.acceptedTime.date < up2.acceptedTime.date) {
-          return -1;
-        }
-
-        if (up1.acceptedTime.date > up2.acceptedTime.date) {
-          return 1;
-        }
-
-        if (up1.acceptedTime.time < up2.acceptedTime.time) {
-          return -1;
-        }
-
-        if (up1.acceptedTime.time > up2.acceptedTime.time) {
-          return 1;
-        }
-
-        return 0;
-      });
+      $scope.upcoming.sort(upcomingCompare);
 
       PleaseWait.hide();
     });

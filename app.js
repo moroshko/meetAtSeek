@@ -24,11 +24,19 @@ angular.module('starter', [
 
     $rootScope.Auth = Auth;
 
-    $timeout(function() {
-      var usersRef = new Firebase(FIREBASE_ROOT + '/users');
+    var usersRef = new Firebase(FIREBASE_ROOT + '/users');
 
-      usersRef.child(Auth.username()).child('requests').on('value', function(snapshot) {
-        Auth.setRequestsCount(snapshot.val() === null ? 0 : Object.keys(snapshot.val()).length);
+    $timeout(function() {
+      $rootScope.$watch(function() {
+        return Auth.username();
+      }, function(newValue) {
+        if (newValue === null) {
+          return;
+        }
+
+        usersRef.child(Auth.username()).child('requests').on('value', function(snapshot) {
+          Auth.setRequestsCount(snapshot.val() === null ? 0 : Object.keys(snapshot.val()).length);
+        });
       });
     }, 500);
   });

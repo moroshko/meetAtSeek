@@ -15,6 +15,15 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
     $scope.title = 'Meetups';
   }
 
+  $scope.isToday = function(day) {
+    var parts = day.fullDate.split('-');
+    var month = parts[1];
+    var day = parts[2];
+    var now = new Date();
+
+    return (now.getMonth() + 1 === +month) && (now.getDate() === +day);
+  };
+
   $scope.Users = Users;
   
   var usersRef = new Firebase(FIREBASE_ROOT + '/users');

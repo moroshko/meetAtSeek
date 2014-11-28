@@ -29,14 +29,15 @@ angular.module('shared').service('Meetups', function($q, FIREBASE_ROOT, Auth) {
     return defer.promise;
   };
 
-  self.add = function(toUsername, requestedTimes, message) {
+  self.add = function(toUsername, requestedTimes, message, place) {
     var defer = $q.defer();
 
     var newMeetupsRef = meetupsRef.push({
       to: toUsername,
       from: Auth.username(),
       requestedTimes: requestedTimes,
-      message: message
+      message: message,
+      place: place
     }, function() {
       var newId = newMeetupsRef.key();
       defer.resolve(newId);

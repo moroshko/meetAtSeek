@@ -1,8 +1,8 @@
 <div class="time-picker-row">
   <div></div>
   <div ng-repeat="day in days" class="text-center">
-    <span ng-if="$index === 0" class="today">Today</span>
-    <span ng-if="$index > 0">{{ day.date }}</span>
+    <span ng-if="$index === 0 && isToday(day)" class="today">Today</span>
+    <span ng-if="$index > 0 || !isToday(day)">{{ day.date }}</span>
     <br>
     {{ day.day }} 
   </div>

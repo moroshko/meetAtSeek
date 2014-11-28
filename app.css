@@ -7857,8 +7857,6 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   top: 17px; }
 .tab1 .my-interests-wrapper {
   max-height: 200px; }
-.tab1 .interests-pool-wrapper {
-  max-height: 200px; }
 
 .tab2 .badge {
   left: 16px;

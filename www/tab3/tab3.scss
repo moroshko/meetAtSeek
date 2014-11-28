@@ -24,12 +24,10 @@
   .upcoming-time {
     float: right;
     font-size: 0.8em;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    border-bottom: 1px solid #ccc;
-    border-left: 1px solid #ccc;
+    padding: 5px;
     position: relative;
     right: -10px;
+    background-color: #eee;
   }
   .upcoming-place, .upcoming-time-time {
     float: right;

@@ -25,6 +25,9 @@
     float: right;
     font-size: 0.8em;
   }
+  .upcoming-place, .upcoming-time-time {
+    float: right;
+  }
   .message-wrapper {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -38,5 +41,9 @@
   .today {
     color: $energized;
     font-weight: bold;
+  }
+  .message-text {
+    white-space: normal;
+    margin-right: 10px;
   }
 }

@@ -16,11 +16,18 @@
         <div class="item" ng-repeat="upcomingMeetup in upcoming">
           {{ upcomingUserName(upcomingMeetup) }}
           <span class="upcoming-time">
-            {{ upcomingMeetup.acceptedTime.day }},
-            {{ acceptedTimeDate(upcomingMeetup.acceptedTime.date) }},
-            {{ upcomingMeetup.acceptedTime.time }}
+            <span class="upcoming-time-time">
+              {{ upcomingMeetup.acceptedTime.day }},
+              {{ acceptedTimeDate(upcomingMeetup.acceptedTime.date) }},
+              {{ upcomingMeetup.acceptedTime.time }}
+            </span>
+            <br>
+            <span class="upcoming-place" ng-if="upcomingMeetup.place">
+              <span ng-if="upcomingMeetup.place === 'hub'">Hub (Level 3)</span>
+              <span ng-if="upcomingMeetup.place === 'lobby'">Lobby (Ground floor)</span>
+            </span>
           </span>
-          <p ng-if="upcomingMeetup.message">
+          <p class="message-text" ng-if="upcomingMeetup.message">
             {{ upcomingMeetup.message }}
           </p>
         </div>
@@ -37,7 +44,7 @@
                   ng-click="viewRequestedMeetup(requestedMeetup)">
             View
           </button>
-          <p ng-if="requestedMeetup.message">
+          <p class="message-text" ng-if="requestedMeetup.message">
             {{ requestedMeetup.message }}
           </p>
         </div>
@@ -49,7 +56,7 @@
         </div>
         <div class="item" ng-repeat="sentMeetup in sent">
           {{ Users.getName(sentMeetup.to) }}
-          <p ng-if="sentMeetup.message">
+          <p class="message-text" ng-if="sentMeetup.message">
             {{ sentMeetup.message }}
           </p>
         </div>
@@ -63,12 +70,12 @@
       <div class="text-center">
         <div class="place-wrapper">
           <button class="button button-small"
-                  ng-class="{ 'button-stable': place !== 'hub', 'button-dark': place === 'hub' }"
+                  ng-class="{ 'button-stable': data.place !== 'hub', 'button-dark': data.place === 'hub' }"
                   ng-click="setPlace('hub')">
             Hub (Level 3)
           </button>
           <button class="button button-stable button-small"
-                  ng-class="{ 'button-stable': place !== 'lobby', 'button-dark': place === 'lobby' }"
+                  ng-class="{ 'button-stable': data.place !== 'lobby', 'button-dark': data.place === 'lobby' }"
                   ng-click="setPlace('lobby')">
             Lobby (Ground floor)
           </button>
@@ -80,7 +87,7 @@
         </div>
         <div class="buttons-wrapper">
           <button class="button button-energized" 
-                  ng-disabled="!((place === 'hub' || place === 'lobby') && availabilityIsSet())"
+                  ng-disabled="!((data.place === 'hub' || data.place === 'lobby') && availabilityIsSet())"
                   ng-click="invite()">
             Invite
           </button>
@@ -98,6 +105,11 @@
       </p>
       <ng-include src="'time-pick/time-pick.html'">
       </ng-include>
+      <div class="text-center" ng-if="meetup.place">
+        <strong>Place: </strong>
+        <span ng-if="meetup.place == 'hub'">Hub (Level 3)</span>
+        <span ng-if="meetup.place == 'lobby'">Lobby (Ground floor)</span>
+      </div>
       <div class="text-center">
         <button class="button button-energized invite-button"
                 ng-disabled="!timeSlotSelected"

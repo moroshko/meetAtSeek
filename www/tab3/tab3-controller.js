@@ -86,25 +86,25 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
     }
   }
 
-  $scope.place = '';
   $scope.data = {
     message: '',
-    availability: {}
+    availability: {},
+    place: ''
   };
 
-  if ($scope.view === 'new') {
-    var requestsCount = Auth.getRequestsCount();
+  var requestsCount = Auth.getRequestsCount();
 
+  $scope.$watch('data', function() {
+    Auth.setRequestsCount(requestsCount);
+  }, true);
+
+  if ($scope.view === 'new') {
     setDayAndTimes();
 
     $scope.setPlace = function(place) {
       Auth.setRequestsCount(requestsCount);
-      $scope.place = place;
+      $scope.data.place = place;
     };
-
-    $scope.$watch('data', function() {
-      Auth.setRequestsCount(requestsCount);
-    }, true);
 
     $scope.availabilityIsSet = function() {
       return Object.keys($scope.data.availability).length > 0;
@@ -125,7 +125,7 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
         }
       }
 
-      Meetups.add($stateParams.username, requestedTimes, $scope.data.message).then(function(meetupId) {
+      Meetups.add($stateParams.username, requestedTimes, $scope.data.message, $scope.data.place).then(function(meetupId) {
         Users.addRequest($stateParams.username, meetupId).then(function() {
           Users.addSent(Auth.username(), meetupId).then(function() {
             $state.go('tab.tab3-all', {
@@ -205,6 +205,8 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
     Meetups.getById($scope.meetupId).then(function(meetup) {
       var minDate = '3000-01-01';
 
+      $scope.meetup = meetup;
+
       for (var i = 0, len = meetup.requestedTimes.length; i < len; i++) {
         if (meetup.requestedTimes[i].date < minDate) {
           minDate = meetup.requestedTimes[i].date;
@@ -231,6 +233,8 @@ angular.module('tab3', []).controller('Tab3Ctrl', function(
       };
 
       $scope.letsMeet = function() {
+        Auth.setRequestsCount(requestsCount);
+        
         for (var key in $scope.data.availability) {
           if ($scope.data.availability[key] === true) {
             var parts = key.split('|');

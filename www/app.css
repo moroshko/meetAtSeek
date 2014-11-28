@@ -7914,3 +7914,12 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .tab3 .message-text {
   white-space: normal;
   margin-right: 10px; }
+.tab3 .matching-interest {
+  min-height: 16px;
+  line-height: 16px;
+  margin-right: 5px;
+  margin-bottom: 5px; }
+.tab3 .request-meetup-button {
+  float: right; }
+.tab3 .matching-interest-container {
+  padding-top: 10px; }

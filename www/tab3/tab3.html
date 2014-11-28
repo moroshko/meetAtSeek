@@ -30,6 +30,12 @@
           <p class="message-text" ng-if="upcomingMeetup.message">
             {{ upcomingMeetup.message }}
           </p>
+          <div class="matching-interest-container">
+            <button class="button button-small matching-interest"
+                    ng-repeat="interest in upcomingMeetup.interests">
+              {{ interest.name }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -37,16 +43,22 @@
         <div class="item item-divider">
           Requests
         </div>
-        <div class="item item-button-right"
+        <div class="item"
              ng-repeat="requestedMeetup in requests">
           {{ Users.getName(requestedMeetup.from) }}
-          <button class="button button-stable"
+          <button class="button button-stable request-meetup-button"
                   ng-click="viewRequestedMeetup(requestedMeetup)">
             View
           </button>
           <p class="message-text" ng-if="requestedMeetup.message">
             {{ requestedMeetup.message }}
           </p>
+          <div class="matching-interest-container">
+            <button class="button button-small matching-interest"
+                    ng-repeat="interest in requestedMeetup.interests">
+              {{ interest.name }}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -59,6 +71,13 @@
           <p class="message-text" ng-if="sentMeetup.message">
             {{ sentMeetup.message }}
           </p>
+
+          <div class="matching-interest-container">
+            <button class="button button-small matching-interest"
+                    ng-repeat="interest in sentMeetup.interests">
+              {{ interest.name }}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -69,10 +69,16 @@ angular.module('tab1', []).controller('Tab1Ctrl', function(
         PleaseWait.hide();
         $scope.interests = interests;
         $scope.matchingInterests = allInterests.filter($scope.notInMyInterests).sort(compareMatchingInterests);
-        $scope.ready = true;      
+        $scope.ready = true;
       });
     });
   });
+
+  $scope.calcInterestsPoolMaxHeight = function() {
+    var tabsOffsetTop = document.getElementsByClassName('tabs')[0].offsetTop;
+    var interestsPoolOffsetTop = document.getElementsByClassName('interests-pool-wrapper')[0].offsetTop;
+    return tabsOffsetTop - interestsPoolOffsetTop - 40 + 'px';
+  };
 
   $scope.addInterest = function(interest) {
     Interests.addUserTo(interest || $scope.data.filter).then(function(interestId) {

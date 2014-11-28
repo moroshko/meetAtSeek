@@ -7898,7 +7898,13 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
   padding-right: 20px; }
 .tab3 .upcoming-time {
   float: right;
-  font-size: 0.8em; }
+  font-size: 0.8em;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  position: relative;
+  right: -10px; }
 .tab3 .upcoming-place, .tab3 .upcoming-time-time {
   float: right; }
 .tab3 .message-wrapper {

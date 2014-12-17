@@ -7924,4 +7924,5 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
 .tab3 .request-meetup-button {
   float: right; }
 .tab3 .matching-interest-container {
-  padding-top: 10px; }
+  padding-top: 10px;
+  white-space: normal; }
